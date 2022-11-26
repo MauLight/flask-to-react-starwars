@@ -1,0 +1,37 @@
+/* 
+    General Styles
+*/
+
+.star {
+    text-align: center;
+    display: flex;
+
+    justify-content: center;
+    background: url('https://i.postimg.cc/SxkXjwC1/2951971.jpg');
+    background-repeat: no-repeat;
+
+    background-position: center;
+    background-size: contain;
+}
+
+ul {
+    list-style: none;
+}
+
+i {
+    color: black;
+}
+
+.center {
+    padding: 70px 0;
+}
+
+a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+h4:hover {
+    font-style: italic;
+    color: darkgray;
+}
