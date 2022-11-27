@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import * as config from '../component/config';
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 
 const IndividualCard = () => {
 
     const [element, setElement] = useState([]);
-	const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     useEffect(() => {
 
@@ -43,10 +44,14 @@ const IndividualCard = () => {
                     return (
                         <div className='col-3 mb-3' key={elem.uid}>
                             <div className="card rounded-0">
-                                <img src={config.PEOPLE_ARR[i]} className="card-img-top rounded-0" alt="..." />
+                                <Link to={'/character/' + elem.uid}>
+                                    <img src={config.PEOPLE_ARR[i]} className="card-img-top rounded-0" alt="..." />
+                                </Link>
                                 <div className="card-body">
-                                    <h5 className="card-title">{elem.name}</h5>
-                                    <button className="btn btn-outline-dark rounded-0" onClick={() => actions.favStarwars(elem.name)} >DATABASE</button> 
+                                    <Link to={'/character/' + elem.uid}>
+                                        <h5 className="card-title">{elem.name}</h5>
+                                    </Link>
+                                    <button className="btn btn-outline-dark rounded-0" onClick={() => actions.favStarwars(elem.name)} >DATABASE</button>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +65,7 @@ const IndividualCard = () => {
 export const People = () => {
     return (
         <div className='planets container-fluid'>
-            
+
             <IndividualCard />
         </div>
 

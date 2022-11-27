@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import * as config from '../component/config';
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 
 const IndividualCard = () => {
@@ -44,9 +45,13 @@ const IndividualCard = () => {
                     return (
                         <div className='col-3 mb-3' key={elem.uid}>
                             <div className="card rounded-0">
-                                <img src={config.VEHICLES_ARR[i]} className="card-img-top rounded-0" alt="..." />
+                                <Link to={'/vehicle/' + elem.uid}>
+                                    <img src={config.VEHICLES_ARR[i]} className="card-img-top rounded-0" alt="..." onClick={() => actions.takeId(i)} />
+                                </Link>
                                 <div className="card-body">
-                                    <h5 className="card-title">{elem.name}</h5>
+                                    <Link to={'/vehicle/' + elem.uid} onClick={() => actions.storeId(i)}>
+                                        <h5 className="card-title">{elem.name}</h5>
+                                    </Link>
                                     <button className="btn btn-outline-dark rounded-0" onClick={() => actions.favStarwars(elem.name)} >DATABASE</button>
                                 </div>
                             </div>

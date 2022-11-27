@@ -13,6 +13,8 @@ import People from "./views/people";
 import Vehicles from "./views/vehicles";
 import { Planets } from "./views/planets";
 import { Details1 } from "./views/details";
+import { Details2 } from "./views/details2";
+import { Details3 } from "./views/details3";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +36,8 @@ const Layout = () => {
 						<Route path="/vehicles" element={<Vehicles />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 						<Route path="/planet/:uid" element={<Details1 />} />
+						<Route path="/character/:uid" element={<Details2 />} />
+						<Route path="/vehicle/:uid" element={<Details3 />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

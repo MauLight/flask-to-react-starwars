@@ -45,7 +45,9 @@ const IndividualCard = () => {
                     return (
                         <div className='col-3 mb-3' key={elem.uid}>
                             <div className="card rounded-0">
-                                <img src={config.PLANETS_ARR[i]} className="card-img-top rounded-0" alt="..." />
+                                <Link to={'/planet/' + elem.uid}>
+                                    <img src={config.PLANETS_ARR[i]} className="card-img-top rounded-0" alt="..." />
+                                </Link>
                                 <div className="card-body">
                                     <Link to={'/planet/' + elem.uid}>
                                         <h5 className="card-title">{elem.name}</h5>

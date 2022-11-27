@@ -5,6 +5,8 @@ from flask_cors import CORS
 from models import db
 import os
 from routes.main import bpMain
+from routes.favorites import bpFav
+from routes.users import bpUsers
 
 load_dotenv()
 
@@ -19,7 +21,9 @@ db.init_app(app)
 Migrate(app, db)
 CORS(app)
 
+app.register_blueprint(bpMain)
+app.register_blueprint(bpUsers, url_prefix='/api')
+app.register_blueprint(bpFav, url_prefix='/api')
+
 if __name__ == '__main__':
     app.run()
-
-app.register_blueprint(bpMain)

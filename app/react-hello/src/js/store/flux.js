@@ -3,11 +3,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 
 			favstarwars: [],
+			storeId: '',
 		},
 		actions: {
 			favStarwars: (name) => {
 				const store = getStore();
+				setStore({ favstarwars: store.favstarwars.filter(fav => fav.name !== name) });
+				console.log(name);
+
+				console.log(store.favstarwars);
 				setStore({ favstarwars: [...store.favstarwars, { name }] });
+				console.log(store.favstarwars);
 
 			},
 
@@ -17,6 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({ favstarwars: store.favstarwars.filter(fav => fav.name !== elem) });
 			},
+
+			takeId: (i) => {
+				setStore({ storeId: i });
+
+			}
 		}
 	};
 };
