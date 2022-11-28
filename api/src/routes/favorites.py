@@ -14,8 +14,10 @@ def all_favorites():
 @bpFav.route('/favorites', methods=['POST'])
 def store_favorite():
     name = request.json.get('name')
+    users_id = request.json.get('users_id')
 
     favorites = Favorites()
     favorites.name = name
+    favorites.users_id = users_id
     favorites.save()
     return jsonify(favorites.serialize()), 200

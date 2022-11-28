@@ -91,6 +91,8 @@ class Favorites(db.Model):
     __tablename__ = 'favorites'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
+    users_id = db.Column(db.Integer, db.ForeignKey(
+        'users.id', ondelete='CASCADE'), nullable=False)
 
     def serialize(self):
         return {
@@ -114,11 +116,25 @@ class Users(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
+    favorites = db.relationship(
+        'Favorites', cascade='all, delete', backref='user')
 
     def serialize(self):
         return {
             'id': self.id,
             'name': self.name
+        }
+
+    def serialize_with_favorites(self):
+        return {
+            'id': self.id,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'birthdate': self.birthdate,
+            'email': self.email,
+            'password': self.password,
+            'verified': self.verified,
+            'favorites': [fav.serialize() for fav in self.favorites]
         }
 
     def save(self):

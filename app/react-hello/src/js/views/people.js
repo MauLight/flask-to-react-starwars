@@ -51,7 +51,7 @@ const IndividualCard = () => {
                                     <Link to={'/character/' + elem.uid}>
                                         <h5 className="card-title">{elem.name}</h5>
                                     </Link>
-                                    <button className="btn btn-outline-dark rounded-0" onClick={() => actions.favStarwars(elem.name)} >DATABASE</button>
+                                    <button className="btn btn-outline-dark rounded-0" onClick={() => actions.favStarwars(elem.name, store.userId)} >DATABASE</button>
                                 </div>
                             </div>
                         </div>

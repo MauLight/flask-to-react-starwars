@@ -35,3 +35,7 @@ h4:hover {
     font-style: italic;
     color: darkgray;
 }
+
+.navbar {
+    background-color: white !important;
+}
